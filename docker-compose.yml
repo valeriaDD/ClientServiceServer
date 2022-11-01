@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  client:
+    container_name: client
+    build: ./
+    ports:
+      - "5002:5002"
+    volumes:
+      - "./:/app"
+  food-ordering:
+    container_name: food-ordering
+    build: ../FoodOrderingService/.
+    ports:
+      - "5003:5003"
+    volumes:
+          - "../FoodOrderingService/./:/app"
+networks:
+  default:
+    name: restaurant
+    external: true
